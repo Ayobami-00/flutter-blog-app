@@ -39,7 +39,7 @@ class _BlogListPageState extends State<BlogListPage> {
             appBar: AppBar(
               elevation: 0.0,
               title: Text(
-                'BLOG DETAILS',
+                'BLOG LIST',
                 style: flutterBlogAppAppTheme().textTheme.bodyText1.copyWith(
                       fontSize: 17.0,
                       fontWeight: FontWeight.bold,
