@@ -28,6 +28,11 @@ class BlogsBloc extends Bloc<BlogsEvent, BlogsState> {
       final Either<ApiServiceFailure, List<Blog>> blogListResponse =
           await _blogInterface.getBlogsList();
       yield BlogsLoaded(blogListResponse: blogListResponse);
+    } else if (event is LoadBlogDetails) {
+      yield BlogsLoading();
+      final Either<ApiServiceFailure, Blog> blogDetailsResponse =
+          await _blogInterface.getBlogDetails(event.id);
+      yield BlogsDetailsLoaded(blogDetailsResponse: blogDetailsResponse);
     }
   }
 }

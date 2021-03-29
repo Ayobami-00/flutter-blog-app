@@ -71,16 +71,44 @@ class ApiService {
       final Response response = await _dio.get("/v1/blogs");
 
       if (response.statusCode == 200) {
-        List<Blog> blogList = [];
+        final List<Blog> blogList = [];
 
-        dynamic result = response.data;
-
-        print(result);
+        final dynamic result = response.data;
 
         result.forEach((data) {
           blogList.add(Blog.fromJson(data as Map<String, dynamic>));
         });
         return right(blogList);
+      } else {
+        return left(const ApiServiceFailure.unsuccessfull());
+      }
+    } catch (e) {
+      return left(const ApiServiceFailure.serverError());
+    }
+  }
+
+  Future<Either<ApiServiceFailure, Blog>> getBlogDetails(
+    String token,
+    String id,
+  ) async {
+    (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+    _dio.options.headers = {"Authorization": "Bearer $token"};
+    try {
+      final Response response = await _dio.get("/v1/blogs/$id");
+
+      if (response.statusCode == 200) {
+        Blog blog;
+
+        final dynamic result = response.data;
+
+        blog = Blog.fromJson(result as Map<String, dynamic>);
+
+        return right(blog);
       } else {
         return left(const ApiServiceFailure.unsuccessfull());
       }

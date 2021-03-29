@@ -12,3 +12,9 @@ class BlogsLoaded extends BlogsState {
 
   BlogsLoaded({this.blogListResponse});
 }
+
+class BlogsDetailsLoaded extends BlogsState {
+  final Either<ApiServiceFailure, Blog> blogDetailsResponse;
+
+  BlogsDetailsLoaded({this.blogDetailsResponse});
+}

@@ -8,11 +8,7 @@ class SplashPage extends StatefulWidget {
   _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage>
-    with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  double _opacity = 0.0;
-
+class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
@@ -34,12 +30,14 @@ class _SplashPageState extends State<SplashPage>
                   .pushReplacementNamed(Router.blogListPageProvider);
             },
             unauthenticated: (_) async {
-              Router.navigator
-                  .pushReplacementNamed(Router.blogListPageProvider);
-              // Router.navigator.pushReplacementNamed(Router.loginBlocProvider);
+              Router.navigator.pushReplacementNamed(Router.loginBlocProvider);
             });
       },
-      child: Container(),
+      child: const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
     );
   }
 }

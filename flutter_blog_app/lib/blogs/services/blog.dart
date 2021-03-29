@@ -21,4 +21,11 @@ class BlogService extends BlogInterface {
         AUTH_TOKEN_SP_STRING);
     return _apiService.getBlogList(auth_token);
   }
+
+  @override
+  Future<Either<ApiServiceFailure, Blog>> getBlogDetails(String id) async {
+    String auth_token = await SharedpreferenceService.getStringValueFromSp(
+        AUTH_TOKEN_SP_STRING);
+    return _apiService.getBlogDetails(auth_token, id);
+  }
 }

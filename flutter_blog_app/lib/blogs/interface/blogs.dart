@@ -4,4 +4,5 @@ import 'package:flutter_blog_app/blogs/models/blog.dart';
 
 abstract class BlogInterface {
   Future<Either<ApiServiceFailure, List<Blog>>> getBlogsList();
+  Future<Either<ApiServiceFailure, Blog>> getBlogDetails(String id);
 }

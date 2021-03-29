@@ -20,11 +20,11 @@ class _LoginPageState extends State<LoginPage> {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.isSubmitting) {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return const Center(child: CircularProgressIndicator());
-              });
+          // showDialog(
+          //     context: context,
+          //     builder: (BuildContext context) {
+          //       return const Center(child: CircularProgressIndicator());
+          //     });
         } else {
           state.authFailureOrSuccessOption.fold(
             () {},
@@ -129,12 +129,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 30),
                   AppSolidButton(
-                      text: 'SIGN IN',
+                      text: 'SUBMIT',
                       backgroundColor: flutterBlogAppAppTheme().accentColor,
+                      isLoading: state.isSubmitting,
                       textColor: Colors.white,
                       height: 40.0,
                       onPressed: () {
-                        FocusScopeNode currentFocus = FocusScope.of(context);
+                        final FocusScopeNode currentFocus =
+                            FocusScope.of(context);
 
                         if (!currentFocus.hasPrimaryFocus) {
                           currentFocus.unfocus();
