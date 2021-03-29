@@ -22,7 +22,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           ),
         ],
         child: MaterialApp(
-          title: 'Coinslash',
+          title: 'Blog App',
           debugShowCheckedModeBanner: false,
           initialRoute: Router.splashPage,
           onGenerateRoute: Router.onGenerateRoute,

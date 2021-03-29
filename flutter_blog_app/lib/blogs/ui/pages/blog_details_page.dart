@@ -66,7 +66,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                     ),
                     CachedNetworkImage(
                       width: double.infinity,
-                      height: 100.0,
+                      // height: 500.0,
                       imageUrl: blog.imageUrl,
                       progressIndicatorBuilder:
                           (context, url, downloadProgress) => Center(

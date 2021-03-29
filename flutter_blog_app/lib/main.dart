@@ -7,9 +7,6 @@ import 'injection.dart';
 void main() {
   configureInjection(Environment.prod);
   runApp(
-    // DevicePreview(
-    // builder: (context) =>
     App(),
-    // )
   );
 }
