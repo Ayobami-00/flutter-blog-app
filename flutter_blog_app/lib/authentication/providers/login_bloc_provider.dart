@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blog_app/authentication/bloc/login/login_bloc.dart';
 import 'package:flutter_blog_app/injection.dart';
-import 'login_page.dart';
+import '../ui/pages/login_page.dart';
 
 class LoginBlocProvider extends StatefulWidget {
   @override

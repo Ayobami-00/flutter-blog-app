@@ -2,8 +2,6 @@ import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'authentication/bloc/authentication/authentication_bloc.dart';
 import 'core/routes/router.gr.dart';
-import 'core/services/shared_preference_service.dart';
-import 'core/ui/themes/flutter_bloc_app_theme.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -32,10 +30,13 @@ class _SplashPageState extends State<SplashPage>
         state.map(
             initial: (_) {},
             authenticated: (authValue) {
-              // Router.navigator.pushReplacementNamed(Router.basePage);
+              Router.navigator
+                  .pushReplacementNamed(Router.blogListPageProvider);
             },
             unauthenticated: (_) async {
-              Router.navigator.pushReplacementNamed(Router.loginBlocProvider);
+              Router.navigator
+                  .pushReplacementNamed(Router.blogListPageProvider);
+              // Router.navigator.pushReplacementNamed(Router.loginBlocProvider);
             });
       },
       child: Container(),

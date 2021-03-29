@@ -55,10 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                   });
                 },
                 (_) {
-                  print("Successful");
-                  // Routing to Splash page after login so that the splash page will get the ads for the api
-                  // and everything can sync.
-                  // Router.navigator.pushNamed(Router.basePage);
+                  Router.navigator
+                      .pushReplacementNamed(Router.blogListPageProvider);
                 },
               );
             },
